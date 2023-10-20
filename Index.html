@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registro de Asistencia al Trabajo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      background-color: #007BFF;
+      color: white;
+      padding: 20px 0;
+      margin: 0;
+    }
+
+    #attendanceForm {
+      background-color: #ffffff;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 0px #000000;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #ffffff;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 0px #000000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Registro de Asistencia al Trabajo</h1>
+  <form id="attendanceForm">
+    <label for="employeeName">Nombre del Empleado:</label>
+    <input type="text" id="employeeName" required>
+    
+    <label for="date">Fecha:</label>
+    <input type="date" id="date" required>
+    
+    <label for="timeIn">Hora de Entrada:</label>
+    <input type="time" id="timeIn" required>
+    
+    <label for="timeOut">Hora de Salida:</label>
+    <input type="time" id="timeOut" required>
+    
+    <button type="submit">Registrar Asistencia</button>
+  </form>
+
+  <h2>Registros de Asistencia</h2>
+  <ul id="attendanceList"></ul>
+
+  <script>
+    const attendanceForm = document.getElementById("attendanceForm");
+    const employeeNameInput = document.getElementById("employeeName");
+    const dateInput = document.getElementById("date");
+    const timeInInput = document.getElementById("timeIn");
+    const timeOutInput = document.getElementById("timeOut");
+    const attendanceList = document.getElementById("attendanceList");
+
+    attendanceForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const employeeName = employeeNameInput.value;
+      const date = dateInput.value;
+      const timeIn = timeInInput.value;
+      const timeOut = timeOutInput.value;
+
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `
+        <strong>${employeeName}</strong> - ${date} - Entrada: ${timeIn} - Salida: ${timeOut}
+      `;
+
+      attendanceList.appendChild(listItem);
+
+      // Puedes guardar estos registros en una base de datos o en una variable en JavaScript según tus necesidades.
+    });
+  </script>
+<form id="attendanceForm" action="assist.php" method="POST">
+    <!-- Resto de tu formulario -->
+</form>
+</body>
+</html>
